@@ -1,21 +1,46 @@
 import { PageProps, graphql } from 'gatsby'
+import { IGatsbyImageData } from 'gatsby-plugin-image'
+import PostHead from '../../components/post/PostHead'
+import PostBody from '../../components/post/PostBody'
 
-export default function Post({ data }: PageProps<Queries.PostPageQuery>) {
-    return (
-        <div>
-            <div>{data.contentfulPost?.title}</div>
-            <div>{data.contentfulPost?.date}</div>
-            <div>{data.contentfulPost?.slug}</div>
-        </div>
-    )
+export default function Post({
+  data: { contentfulPost },
+}: PageProps<Queries.PostPageQuery>) {
+  return (
+    <>
+      <PostHead
+        title={contentfulPost?.title as string}
+        category={contentfulPost?.category as string[]}
+        date={contentfulPost?.date as string}
+        thumbnail={
+          contentfulPost?.thumbnail?.gatsbyImageData as IGatsbyImageData
+        }
+      />
+      {/* <PostBody content={contentfulPost?.content as raw} /> */}
+
+      {/* <div>
+        <div>{contentfulPost?.title}</div>
+        <div>{contentfulPost?.date}</div>
+        <div>{contentfulPost?.slug}</div>
+        <div>{contentfulPost?.category}</div>
+      </div> */}
+    </>
+  )
 }
 
 export const query = graphql`
   query PostPage($slug: String!) {
     contentfulPost(slug: { eq: $slug }) {
       title
-      slug
+      thumbnail {
+        gatsbyImageData(width: 1000)
+      }
       date
+      slug
+      category
+      content {
+        raw
+      }
     }
   }
 `

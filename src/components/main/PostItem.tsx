@@ -3,12 +3,12 @@ import { Link } from 'gatsby'
 import { GatsbyImage, IGatsbyImageData } from 'gatsby-plugin-image'
 
 type PostItemProps = {
-    title: string
-    date: string
-    category: string[]
-    thumbnail: IGatsbyImageData
-    description: string
-    slug: string
+  title: string
+  date: string
+  category: string[]
+  thumbnail: IGatsbyImageData
+  description: string
+  slug: string
 }
 
 const Wrapper = styled(Link)`
@@ -20,6 +20,14 @@ const Wrapper = styled(Link)`
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   text-decoration: none;
   color: inherit;
+
+  @media (max-width: 1024px) {
+    width: calc(50% - 10px);
+  }
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `
 
 const Thumbnail = styled.div`
@@ -32,7 +40,6 @@ const Thumbnail = styled.div`
 const Contents = styled.div`
   padding: 15px;
 `
-
 const Title = styled.div`
   display: -webkit-box;
   overflow: hidden;
@@ -40,10 +47,15 @@ const Title = styled.div`
   font-size: 18px;
   font-weight: 700;
   text-overflow: ellipsis;
+  white-space: no-wrap;
   word-wrap: break-word;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   line-height: 1.2em;
+
+  @media (max-width: 768px) {
+    font-size: 15px;
+  }
 `
 
 const Date = styled.div`
@@ -76,31 +88,33 @@ const Description = styled.div`
 `
 
 export default function PostItem({
-    title,
-    date,
-    category,
-    thumbnail,
-    description,
-    slug,
+  title,
+  date,
+  category,
+  thumbnail,
+  description,
+  slug,
 }: PostItemProps) {
-    return (
-        <Wrapper to={slug as string}>
-            <Thumbnail>
-                <GatsbyImage
-                    image={thumbnail}
-                    alt={title as string}
-                    style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                />
-            </Thumbnail>
+  return (
+    <Wrapper to={('posts/' + slug) as string}>
+      <Thumbnail Thumbnail>
+        <GatsbyImage
+          image={thumbnail}
+          alt={title as string}
+          style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+        />
+      </Thumbnail>
 
-            <Contents>
-                <Title>{title}</Title>
-                <Date>{date}</Date>
-                <Category>
-                    {category?.map(category => <div key={category}>#{category}</div>)}
-                </Category>
-                <Description>{description}</Description>
-            </Contents>
-        </Wrapper>
-    )
+      <Contents>
+        <Title>{title}</Title>
+        <Date>{date}</Date>
+        <Category>
+          {category.map(category => (
+            <div key={category}>#{category}</div>
+          ))}
+        </Category>
+        <Description>{description}</Description>
+      </Contents>
+    </Wrapper>
+  )
 }
