@@ -16,8 +16,10 @@ export default function Post({
           contentfulPost?.thumbnail?.gatsbyImageData as IGatsbyImageData
         }
       />
-      {/* <PostBody content={contentfulPost?.content as raw} /> */}
-
+      <PostBody
+        content={contentfulPost?.content as Queries.ContentfulPostContent}
+      />
+      {/* <PostBody content={contentfulPost?.content?.raw.value} /> */}
       {/* <div>
         <div>{contentfulPost?.title}</div>
         <div>{contentfulPost?.date}</div>
@@ -35,11 +37,19 @@ export const query = graphql`
       thumbnail {
         gatsbyImageData(width: 1000)
       }
-      date
-      slug
       category
+      date
       content {
         raw
+        references {
+          ... on ContentfulAsset {
+            contentful_id
+            title
+            description
+            gatsbyImageData(width: 774)
+            __typename
+          }
+        }
       }
     }
   }

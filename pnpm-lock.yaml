@@ -5,6 +5,7 @@ specifiers:
   '@contentful/rich-text-types': ^16.8.5
   '@egjs/react-infinitegrid': ^4.12.0
   '@types/node': ^20.11.19
+  '@types/prismjs': ^1.26.4
   '@types/react': ^18.2.55
   '@types/react-dom': ^18.2.19
   '@typescript-eslint/eslint-plugin': ^7.17.0
@@ -24,6 +25,7 @@ specifiers:
   gatsby-source-filesystem: ^5.13.1
   gatsby-transformer-sharp: ^5.13.1
   prettier: ^3.3.3
+  prismjs: ^1.29.0
   react: ^18.2.0
   react-dom: ^18.2.0
   react-icons: ^5.2.1
@@ -44,6 +46,7 @@ dependencies:
   gatsby-source-contentful: 8.13.2_ad2fc049a9fca5c00680a41998ba56fb
   gatsby-source-filesystem: 5.13.1_gatsby@5.13.7
   gatsby-transformer-sharp: 5.13.1_67aa150f8b6c7a654a79a39a08982ffa
+  prismjs: 1.29.0
   react: 18.3.1
   react-dom: 18.3.1_react@18.3.1
   react-icons: 5.2.1_react@18.3.1
@@ -51,6 +54,7 @@ dependencies:
 
 devDependencies:
   '@types/node': 20.14.12
+  '@types/prismjs': 1.26.4
   '@types/react': 18.3.3
   '@types/react-dom': 18.3.0
   '@typescript-eslint/eslint-plugin': 7.17.0_30f32024dd0e91cee59e4ebaac737942
@@ -3058,6 +3062,10 @@ packages:
     resolution: {integrity: sha512-dISoDXWWQwUquiKsyZ4Ng+HX2KsPL7LyHKHQwgGFEA3IaKac4Obd+h2a/a6waisAoepJlBcx9paWqjA8/HVjCw==}
     dev: false
 
+  /@types/prismjs/1.26.4:
+    resolution: {integrity: sha512-rlAnzkW2sZOjbqZ743IHUhFcvzaGbqijwOu8QZnZCjfQzBqFE3s4lOTJEsxikImav9uzz/42I+O7YUs1mWgMlg==}
+    dev: true
+
   /@types/prop-types/15.7.12:
     resolution: {integrity: sha512-5zvhXYtRNRluoE/jAp4GVsSduVUzNWKkOZrCDBWYtE7biZywwdC2AcEzg+cSMLFRfVgeAFqpfNabiPjxFddV1Q==}
 
@@ -3893,7 +3901,7 @@ packages:
   /axios/0.21.4_debug@4.3.5:
     resolution: {integrity: sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==}
     dependencies:
-      follow-redirects: 1.15.6_debug@4.3.5
+      follow-redirects: 1.15.6
     transitivePeerDependencies:
       - debug
     dev: false
@@ -3901,7 +3909,7 @@ packages:
   /axios/1.7.2:
     resolution: {integrity: sha512-2A8QhOMrbomlDuiLeK9XibIBzuHeRcqqNOHp0Cyp5EoJ1IFDh+XZH3A6BkXtv0K4gFGCI0Y4BM7B1wOEi0Rmgw==}
     dependencies:
-      follow-redirects: 1.15.6_debug@4.3.5
+      follow-redirects: 1.15.6
       form-data: 4.0.0
       proxy-from-env: 1.1.0
     transitivePeerDependencies:
@@ -6377,7 +6385,7 @@ packages:
   /flatted/3.3.1:
     resolution: {integrity: sha512-X8cqMLLie7KsNUDSdzeN8FYK9rEt4Dt67OsG/DNGnYTSDBG4uFAJFBnUeiV+zCVAvwFy56IjM9sH51jVaEhNxw==}
 
-  /follow-redirects/1.15.6_debug@4.3.5:
+  /follow-redirects/1.15.6:
     resolution: {integrity: sha512-wWN62YITEaOpSK584EZXJafH1AGpO8RVgElfkuXbTOrPX4fIfOyEpW/CsiNd8JdYrAoOvafRTOEnvsO++qCqFA==}
     engines: {node: '>=4.0'}
     peerDependencies:
@@ -6385,8 +6393,6 @@ packages:
     peerDependenciesMeta:
       debug:
         optional: true
-    dependencies:
-      debug: 4.3.5
     dev: false
 
   /for-each/0.3.3:
@@ -9641,6 +9647,11 @@ packages:
     dependencies:
       lodash: 4.17.21
       renderkid: 2.0.7
+    dev: false
+
+  /prismjs/1.29.0:
+    resolution: {integrity: sha512-Kx/1w86q/epKcmte75LNrEoT+lX8pBpavuAbvJWRXar7Hz8jrtF+e3vY751p0R8H9HdArwaCTNDDzHg/ScJK1Q==}
+    engines: {node: '>=6'}
     dev: false
 
   /probe-image-size/7.2.3:
