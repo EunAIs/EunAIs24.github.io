@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import styled from 'styled-components'
 import Prism from 'prismjs'
 import 'prismjs/components/prism-typescript'
+import TableOfContents from './TableOfContents'
 import useRenderRichText from '../../hooks/useRenderRichText'
 
 type PostBodyProps = {
@@ -16,6 +17,11 @@ const Wrapper = styled.div`
   justify-content: space-between;
   align-items: flex-start;
   padding-top: 100px;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    padding-top: 60px;
+  }
 `
 
 const Content = styled.div`
@@ -26,6 +32,12 @@ const Content = styled.div`
   font-size: 16px;
   line-height: 2;
   word-break: break-word;
+
+  @media (max-width: 768px) {
+    gap: 50px;
+    font-size: 14px;
+    line-height: 1.8;
+  }
 `
 
 export default function PostBody({ content }: PostBodyProps) {
@@ -38,6 +50,7 @@ export default function PostBody({ content }: PostBodyProps) {
             <Content>
                 <div id="content">{richText}</div>
             </Content>
+            <TableOfContents content={content} />
         </Wrapper>
     )
 }
